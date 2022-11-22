@@ -31,5 +31,32 @@ namespace _1_lab_3_sem
         {
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0
+                || textBox3.Text.Length == 0 ||
+                (radioButton1.Checked == false && radioButton2.Checked == false))
+            {
+                if (textBox1.Text.Length == 0) { MessageBox.Show("Не введена фамилия"); }
+                if (textBox2.Text.Length == 0) { MessageBox.Show("Не введено имя"); }
+                if (textBox3.Text.Length == 0) { MessageBox.Show("Не введено Отчество"); }
+                if (radioButton1.Checked == false && radioButton2.Checked == false)
+                        { MessageBox.Show("Заполните сложность вопросов"); }
+                return;
+            }
+            string name = textBox1.Text + " " + textBox2.Text + " " + textBox3.Text;
+            bool questionHardnes = false;
+            if (radioButton1.Checked == true)
+            {
+                questionHardnes = true;
+            }
+            TaskForm tf = new TaskForm(
+                name,
+                comboBox1.Text,
+                numericUpDown1.Value,
+                questionHardnes);
+            tf.ShowDialog();
+        }
     }
 }
